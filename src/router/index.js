@@ -6,6 +6,9 @@ let contentX = document.getElementById('contentX');
 const router = async (route) => {
     contentX.innerHTML = '';
     switch (route) {
+        case '': {
+            return contentX.appendChild(pages.home());
+        }
         case '#/': {
             return contentX.appendChild(pages.home());
         }

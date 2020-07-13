@@ -8,13 +8,20 @@ const getPost = async () => {
 export default async () => {
     const divElement = document.createElement('div');
     divElement.innerHTML = view;
-    const post = await getPost();
-    let ulList = divElement.querySelector('#ulList');
+    const posts = await getPost();
+    const divContentPost = divElement.querySelector('#divPost');
     let html = '';
-    post.map(post1 => {
-        let li = createElement('li');
-        html = ''
+
+    posts.map(post => {
+        html = '';
+        let div = document.createElement('div');
+        div.classList.add('divPost');
+        div.classList.add('mb-2');
+        html += `<h3>${post.title}</h3>`;
+        html += `<p>${post.body}</p>`;
+        div.innerHTML = html;
+        divContentPost.appendChild(div);
     });
-    console.log(post);
+
     return divElement;
 }
